@@ -49,7 +49,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            flex-wrap: wrap; /* Supaya tidak overflow di HP kecil */
+            flex-wrap: wrap; 
             gap: 10px;
         }
 
@@ -137,7 +137,6 @@
             margin: auto; 
         }
 
-        /* Agar Chart Card di laptop tetap di tengah jika diperlukan */
         .card { 
             background: white; border-radius: 25px; padding: 20px; 
             border: 1px solid rgba(255, 45, 120, 0.1);
@@ -158,7 +157,6 @@
         .btn-primary { background: var(--primary); color: white; box-shadow: 0 5px 15px rgba(255, 45, 120, 0.3); }
         .btn-secondary { background: var(--secondary); color: white; box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3); }
 
-        /* CALENDAR RESPONSIVE */
         .calendar-preview { 
             grid-column: 1 / -1; 
             display: grid; 
@@ -189,7 +187,6 @@
 
         .balance-info { flex: 1; min-width: 200px; }
 
-        /* TABLE RESPONSIVE */
         .table-container { overflow-x: auto; width: 100%; }
         table { width:100%; border-collapse: collapse; margin-top:15px; min-width: 600px; }
 
@@ -199,7 +196,7 @@
             .tab-btn { padding: 8px 10px; font-size: 11px; }
             .balance-hero { text-align: center; padding: 20px; }
             .balance-hero h1 { font-size: 2rem !important; }
-            .calendar-preview { grid-template-columns: 1fr 1fr; } /* 2 kolom di HP */
+            .calendar-preview { grid-template-columns: 1fr 1fr; }
             .page { padding: 15px; }
         }
     </style>

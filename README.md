@@ -19,10 +19,10 @@
             --text-dark: #2d0015;
             --text-soft: #8a5a71;
             --danger: #ff0000;
-            --glass: rgba(255, 255, 255, 0.8);
+            --glass: rgba(255, 255, 255, 0.7);
         }
 
-        * { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        * { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-sizing: border-box; }
 
         body { 
             margin:0; 
@@ -36,24 +36,79 @@
             overflow-x: hidden;
         }
 
+        /* --- HEADER BARU --- */
+        header {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 45, 120, 0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(255, 45, 120, 0.3);
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: -1px;
+            color: var(--text-dark);
+        }
+
         .nav-tabs {
-            display: flex; justify-content: center; gap: 15px; padding: 20px;
-            background: var(--glass); backdrop-filter: blur(20px);
-            position: sticky; top: 0; z-index: 1000;
-            border-bottom: 2px solid var(--primary-light);
+            display: flex;
+            gap: 10px;
         }
 
         .tab-btn {
-            padding: 12px 25px; border-radius: 15px; border: 2px solid transparent;
-            background: white; color: var(--text-soft); cursor: pointer; font-weight: 700;
-            display: flex; align-items: center; gap: 10px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: none;
+            background: transparent;
+            color: var(--text-soft);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn i { font-size: 16px; }
+
+        .tab-btn:hover {
+            background: rgba(255, 45, 120, 0.05);
+            color: var(--primary);
         }
 
         .tab-btn.active {
-            background: var(--primary); color: white;
-            box-shadow: 0 8px 20px rgba(255, 45, 120, 0.3);
-            transform: translateY(-2px);
+            background: var(--primary);
+            color: white !important;
+            box-shadow: 0 6px 15px rgba(255, 45, 120, 0.2);
         }
+        /* --- END HEADER --- */
 
         .page { display: none; padding: 30px; animation: slideUp 0.6s ease; }
         .page.active { display: block; }
@@ -127,6 +182,7 @@
         }
 
         @media (max-width: 900px) {
+            header { padding: 15px 20px; flex-direction: column; gap: 15px; }
             .container-grid { grid-template-columns: 1fr; }
             .calendar-preview { grid-template-columns: repeat(2, 1fr); }
             .balance-hero { grid-column: auto; flex-direction: column; text-align: center; gap: 20px; }
@@ -135,10 +191,16 @@
 </head>
 <body>
 
-<nav class="nav-tabs">
-    <div class="tab-btn active" onclick="openPage('planner', this)"><i class="fas fa-calendar-alt"></i> Strategic Planner</div>
-    <div class="tab-btn" onclick="openPage('finance', this)"><i class="fas fa-money-bill-wave"></i> Finance AI</div>
-</nav>
+<header>
+    <div class="logo-section">
+        <div class="logo-icon"><i class="fas fa-brain"></i></div>
+        <div class="logo-text">AI.HUB</div>
+    </div>
+    <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="openPage('planner', this)"><i class="fas fa-calendar-day"></i> Planner</button>
+        <button class="tab-btn" onclick="openPage('finance', this)"><i class="fas fa-wallet"></i> Finance</button>
+    </nav>
+</header>
 
 <div id="planner" class="page active">
     <div class="illustration-card">

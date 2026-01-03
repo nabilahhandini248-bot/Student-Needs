@@ -36,19 +36,21 @@
             overflow-x: hidden;
         }
 
-        /* --- HEADER BARU --- */
+        /* --- HEADER CLEAN --- */
         header {
             background: var(--glass);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 45, 120, 0.1);
-            padding: 15px 40px;
+            border-bottom: 2px solid var(--primary-light);
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            flex-wrap: wrap; /* Supaya tidak overflow di HP kecil */
+            gap: 10px;
         }
 
         .logo-section {
@@ -60,57 +62,52 @@
         .logo-icon {
             background: var(--primary);
             color: white;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
-            font-size: 20px;
-            box-shadow: 0 4px 12px rgba(255, 45, 120, 0.3);
+            border-radius: 10px;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(255, 45, 120, 0.3);
         }
 
         .logo-text {
             font-weight: 800;
-            font-size: 22px;
-            letter-spacing: -1px;
+            font-size: 20px;
+            letter-spacing: -0.5px;
             color: var(--text-dark);
         }
 
         .nav-tabs {
             display: flex;
-            gap: 10px;
+            gap: 5px;
         }
 
         .tab-btn {
-            padding: 10px 20px;
-            border-radius: 12px;
+            padding: 8px 12px;
+            border-radius: 10px;
             border: none;
             background: transparent;
             color: var(--text-soft);
             cursor: pointer;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 12px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
-        .tab-btn i { font-size: 16px; }
-
-        .tab-btn:hover {
-            background: rgba(255, 45, 120, 0.05);
-            color: var(--primary);
-        }
+        .tab-btn:hover { background: var(--primary-light); color: var(--primary); }
 
         .tab-btn.active {
             background: var(--primary);
             color: white !important;
-            box-shadow: 0 6px 15px rgba(255, 45, 120, 0.2);
+            box-shadow: 0 6px 12px rgba(255, 45, 120, 0.2);
         }
-        /* --- END HEADER --- */
 
-        .page { display: none; padding: 30px; animation: slideUp 0.6s ease; }
+        /* --- PAGES & CARDS --- */
+        .page { display: none; padding: 20px; animation: slideUp 0.6s ease; }
         .page.active { display: block; }
 
         @keyframes slideUp { 
@@ -119,73 +116,91 @@
         }
 
         .illustration-card {
-            background: white; border-radius: 30px; padding: 30px;
-            display: flex; align-items: center; gap: 30px; margin-bottom: 30px;
+            background: white; border-radius: 25px; padding: 20px;
+            display: flex; align-items: center; gap: 20px; margin-bottom: 25px;
             box-shadow: 0 15px 35px rgba(255, 45, 120, 0.1);
             border: 1px solid var(--primary-light);
             position: relative; overflow: hidden;
         }
 
-        .illustration-card img {
-            width: 150px; height: auto; animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
         .bubble-text {
-            background: var(--primary-light); padding: 20px; border-radius: 20px;
+            background: var(--primary-light); padding: 15px; border-radius: 15px;
             border-bottom-left-radius: 0; color: var(--primary);
-            font-weight: 700; position: relative; border: 1px solid rgba(255, 45, 120, 0.2);
+            font-weight: 700; font-size: 14px; position: relative; border: 1px solid rgba(255, 45, 120, 0.2);
         }
 
-        .container-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; max-width: 1300px; margin: auto; }
+        .container-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 20px; 
+            max-width: 1300px; 
+            margin: auto; 
+        }
+
+        /* Agar Chart Card di laptop tetap di tengah jika diperlukan */
         .card { 
-            background: white; border-radius: 25px; padding: 25px; 
+            background: white; border-radius: 25px; padding: 20px; 
             border: 1px solid rgba(255, 45, 120, 0.1);
             box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            height: fit-content;
         }
         .card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
-        .form-group { margin-bottom: 20px; }
-        label { font-size: 11px; font-weight: 800; color: var(--text-soft); text-transform: uppercase; margin-bottom: 8px; display: block; }
+        .form-group { margin-bottom: 15px; }
+        label { font-size: 11px; font-weight: 800; color: var(--text-soft); text-transform: uppercase; margin-bottom: 6px; display: block; }
         input, select { 
-            width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #ffeef4; 
-            background: #fffafa; color: var(--text-dark); font-family: inherit; font-weight: 600;
+            width: 100%; padding: 12px; border-radius: 12px; border: 2px solid #ffeef4; 
+            background: #fffafa; color: var(--text-dark); font-family: inherit; font-weight: 600; font-size: 14px;
         }
         input:focus { border-color: var(--primary); outline: none; background: white; }
 
-        button { 
-            width: 100%; padding: 15px; border-radius: 15px; border: none; font-weight: 800; cursor: pointer;
-        }
+        button { width: 100%; padding: 12px; border-radius: 12px; border: none; font-weight: 800; cursor: pointer; font-size: 14px; }
         .btn-primary { background: var(--primary); color: white; box-shadow: 0 5px 15px rgba(255, 45, 120, 0.3); }
         .btn-secondary { background: var(--secondary); color: white; box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3); }
 
-        .calendar-preview { grid-column: span 3; display: grid; grid-template-columns: repeat(7, 1fr); gap: 15px; margin-top: 30px; }
-        .day-col { background: white; border-radius: 20px; padding: 15px; min-height: 200px; border: 2px solid #ffeef4; }
-        .day-name { text-align: center; font-weight: 800; color: var(--primary); margin-bottom: 15px; }
+        /* CALENDAR RESPONSIVE */
+        .calendar-preview { 
+            grid-column: 1 / -1; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+            gap: 15px; 
+            margin-top: 25px; 
+        }
+        .day-col { background: white; border-radius: 20px; padding: 15px; min-height: 150px; border: 2px solid #ffeef4; }
+        .day-name { text-align: center; font-weight: 800; color: var(--primary); margin-bottom: 12px; font-size: 14px; }
 
         .event-tag { 
-            background: var(--bg-body); padding: 12px; border-radius: 12px; margin-bottom: 10px; font-size: 11px;
-            border-left: 5px solid var(--primary); font-weight: 600;
+            background: var(--bg-body); padding: 10px; border-radius: 10px; margin-bottom: 8px; font-size: 11px;
+            border-left: 4px solid var(--primary); font-weight: 600;
         }
 
         .stat-box {
-            background: white; padding: 20px; border-radius: 20px; text-align: center;
+            background: white; padding: 15px; border-radius: 15px; text-align: center; flex: 1;
             border: 1px solid var(--primary-light);
         }
         .balance-hero {
-            grid-column: span 2;
+            grid-column: 1 / -1;
             background: linear-gradient(135deg, #ff2d78, #ff7eb3);
-            color: white; padding: 40px; border-radius: 30px;
-            display: flex; justify-content: space-between; align-items: center;
+            color: white; padding: 30px; border-radius: 25px;
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
             box-shadow: 0 15px 35px rgba(255, 45, 120, 0.2);
+            gap: 20px;
         }
 
-        @media (max-width: 900px) {
-            header { padding: 15px 20px; flex-direction: column; gap: 15px; }
-            .container-grid { grid-template-columns: 1fr; }
-            .calendar-preview { grid-template-columns: repeat(2, 1fr); }
-            .balance-hero { grid-column: auto; flex-direction: column; text-align: center; gap: 20px; }
+        .balance-info { flex: 1; min-width: 200px; }
+
+        /* TABLE RESPONSIVE */
+        .table-container { overflow-x: auto; width: 100%; }
+        table { width:100%; border-collapse: collapse; margin-top:15px; min-width: 600px; }
+
+        @media (max-width: 600px) {
+            header { padding: 10px; justify-content: center; }
+            .logo-text { font-size: 18px; }
+            .tab-btn { padding: 8px 10px; font-size: 11px; }
+            .balance-hero { text-align: center; padding: 20px; }
+            .balance-hero h1 { font-size: 2rem !important; }
+            .calendar-preview { grid-template-columns: 1fr 1fr; } /* 2 kolom di HP */
+            .page { padding: 15px; }
         }
     </style>
 </head>
@@ -193,7 +208,7 @@
 
 <header>
     <div class="logo-section">
-        <div class="logo-icon"><i class="fas fa-brain"></i></div>
+        <div class="logo-icon"><i class="fas fa-bolt"></i></div>
         <div class="logo-text">AI.HUB</div>
     </div>
     <nav class="nav-tabs">
@@ -204,9 +219,8 @@
 
 <div id="planner" class="page active">
     <div class="illustration-card">
-        <img src="https://cdni.iconscout.com/illustration/premium/thumb/male-manager-working-on-marketing-planning-illustration-download-in-svg-png-gif-file-formats--business-plan-strategy-development-pack-illustrations-5384160.png">
         <div>
-            <h2 style="margin-top:0; color: var(--primary)">Toxic Productivity Hub</h2>
+            <h2 style="margin-top:0; color: var(--primary); font-size: 20px;">Toxic Productivity Hub</h2>
             <div class="bubble-text" id="aiAdvice">Cepat input jadwalmu, sebelum masa depanmu makin suram.</div>
         </div>
     </div>
@@ -225,8 +239,8 @@
 
         <div class="card" style="display:flex; flex-direction:column; align-items:center;">
             <h3>Beban Hidup</h3>
-            <div style="width: 100%; max-width: 200px;"><canvas id="myPieChart"></canvas></div>
-            <div id="chartLegend" style="margin-top:20px; font-weight:700; color:var(--primary)"></div>
+            <div style="width: 100%; max-width: 180px;"><canvas id="myPieChart"></canvas></div>
+            <div id="chartLegend" style="margin-top:15px; font-weight:700; color:var(--primary); font-size: 12px;"></div>
         </div>
 
         <div class="card">
@@ -250,27 +264,26 @@
 
 <div id="finance" class="page">
     <div class="illustration-card">
-        <img src="https://cdni.iconscout.com/illustration/premium/thumb/woman-checking-financial-growth-illustration-download-in-svg-png-gif-file-formats--business-report-analysis-data-pack-illustrations-5384157.png">
         <div>
-            <h2 style="margin-top:0; color: var(--primary)">Judge My Wallet AI</h2>
+            <h2 style="margin-top:0; color: var(--primary); font-size: 20px;">Judge My Wallet AI</h2>
             <div class="bubble-text" id="aiAnalysis">Silakan masukkan data keuanganmu, biar saya tertawakan.</div>
         </div>
     </div>
 
     <div class="container-grid">
         <div class="balance-hero">
-            <div>
+            <div class="balance-info">
                 <span style="opacity:0.9; font-weight:600">Sisa Saldo (Menuju Kemiskinan)</span>
-                <h1 id="balanceDisplay" style="font-size:3rem; margin:10px 0">Rp 0</h1>
+                <h1 id="balanceDisplay" style="font-size:2.5rem; margin:10px 0">Rp 0</h1>
             </div>
-            <div style="display:flex; gap:20px">
+            <div style="display:flex; gap:10px; flex: 1; width: 100%;">
                 <div class="stat-box" style="color:var(--text-dark)">
                     <small>Duit Masuk</small>
-                    <div id="totalIncomeDisplay" style="color:var(--secondary); font-weight:800">Rp 0</div>
+                    <div id="totalIncomeDisplay" style="color:var(--secondary); font-weight:800; font-size: 13px;">Rp 0</div>
                 </div>
                 <div class="stat-box" style="color:var(--text-dark)">
                     <small>Duit Melayang</small>
-                    <div id="totalExpenseDisplay" style="color:var(--primary); font-weight:800">Rp 0</div>
+                    <div id="totalExpenseDisplay" style="color:var(--primary); font-weight:800; font-size: 13px;">Rp 0</div>
                 </div>
             </div>
         </div>
@@ -283,17 +296,17 @@
             <button class="btn-primary" onclick="addFinanceTransaction()">Simpan Transaksi</button>
         </div>
 
-        <div class="card" style="grid-column: span 3;">
+        <div class="card" style="grid-column: 1 / -1;">
             <h3>Riwayat Kebobrokan Ekonomi</h3>
-            <div style="overflow-x: auto;">
-                <table style="width:100%; border-collapse: collapse; margin-top:15px;">
+            <div class="table-container">
+                <table>
                     <thead style="background:var(--primary-light); border-radius:10px">
                         <tr>
-                            <th style="padding:15px; text-align:left; color:var(--primary)">WAKTU</th>
-                            <th style="padding:15px; text-align:left; color:var(--primary)">DESKRIPSI</th>
-                            <th style="padding:15px; text-align:left; color:var(--primary)">STATUS</th>
-                            <th style="padding:15px; text-align:left; color:var(--primary)">NOMINAL</th>
-                            <th style="padding:15px; text-align:left; color:var(--primary)">AKSI</th>
+                            <th style="padding:15px; text-align:left; color:var(--primary); font-size: 12px;">WAKTU</th>
+                            <th style="padding:15px; text-align:left; color:var(--primary); font-size: 12px;">DESKRIPSI</th>
+                            <th style="padding:15px; text-align:left; color:var(--primary); font-size: 12px;">STATUS</th>
+                            <th style="padding:15px; text-align:left; color:var(--primary); font-size: 12px;">NOMINAL</th>
+                            <th style="padding:15px; text-align:left; color:var(--primary); font-size: 12px;">AKSI</th>
                         </tr>
                     </thead>
                     <tbody id="finTableBody"></tbody>
